@@ -24,6 +24,8 @@ public class Manager : MonoBehaviour {
 
 	private float timeLeft = 60.0f;
 
+	private bool isPlaying;
+
 	void Awake () {
 		flippedCards = 0;
 		cards = GameObject.FindGameObjectsWithTag("Card");	
@@ -31,6 +33,7 @@ public class Manager : MonoBehaviour {
 		restartButton.SetActive(false);
 		winnerText.gameObject.SetActive(false);
 		numberOfPairsText.text = "Number of pairs left: " + numberOfPairs;
+		isPlaying = true;
 	}
 
 	void Update ()
@@ -38,7 +41,9 @@ public class Manager : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.Escape)) {
 			Application.Quit ();
 		}
-		timer();
+		if (isPlaying) {
+			timer ();
+		}
 	}
 
 	void timer() 
@@ -52,6 +57,7 @@ public class Manager : MonoBehaviour {
 			winnerText.text = "You lost try again!";
 			winnerText.gameObject.SetActive(true);
 			restartButton.SetActive(true);
+			isPlaying = false;
 		}
 	}
 
@@ -84,6 +90,7 @@ public class Manager : MonoBehaviour {
 				winnerText.gameObject.SetActive(true);
 				restartButton.SetActive(true);
 				exitButton.SetActive(true);
+				isPlaying = false;
 			}
 		}
 
@@ -117,6 +124,7 @@ public class Manager : MonoBehaviour {
 			exitButton.SetActive (false);
 			numberOfPairs = 6;
 			numberOfPairsText.text = "Number of pairs: " + numberOfPairs;
+			isPlaying = true;
 			timeLeft = 60.0f;
 		}
 		shuffle();
