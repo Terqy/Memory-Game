@@ -8,6 +8,7 @@ public class Card : MonoBehaviour {
 
 	public AudioSource cardTurn;
 
+	[SerializeField]
 	private int cardValue;
 
 	private bool faceUp;

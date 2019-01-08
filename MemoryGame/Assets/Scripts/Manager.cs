@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Manager : MonoBehaviour {
 	public GameObject[] cards;
 	public Sprite[] cardFront;
-	public int[] values;
+	public int[] values = new int[12];
 
 	public Sprite cardBack;
 
@@ -47,7 +47,6 @@ public class Manager : MonoBehaviour {
 
 		int timeLeftInt = (int)Mathf.RoundToInt(timeLeft);
 		timerText.text = "Time left: " + timeLeftInt;
-		Debug.Log(timeLeftInt);
 
 		if (timeLeft < 0) {
 			winnerText.text = "You lost try again!";
